@@ -53,13 +53,13 @@ Pass the ArrayList of HomeMenus
 
 ```
 
-##show/Hide GridMenu 
+## show/Hide GridMenu 
 just call this function
 ```
   setGridView(true)
 ```
 
-##Hide/Show MenuIcon 
+## Hide/Show MenuIcon 
 just call this function 
 ```
  setShowMenuIcon(true);
