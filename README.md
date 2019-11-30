@@ -4,10 +4,11 @@ Material home menu is a android library for creating material design home menus 
 
 ## Features built in:
 
-1. Customization of HomeMenus
-2. Based on Recycleview
-3. Hide icon from menu is also available
-4. MenuClick event 
+1. Material Design HomeMenus
+2. Dragable Menus
+3. Both Vertical and GridMenu 
+4. Hide icon from menu is also available
+5. MenuClick event 
 
 
 ## Integration 
@@ -52,7 +53,13 @@ Pass the ArrayList of HomeMenus
 
 ```
 
-Hide MenuIcon 
+##show/Hide GridMenu 
+just call this function
+```
+  setGridView(true)
+```
+
+##Hide/Show MenuIcon 
 just call this function 
 ```
  setShowMenuIcon(true);
