@@ -13,10 +13,13 @@ public class MaterialHomeMenu extends BaseMenuActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setShowMenuIcon(true);
+        setGridView(true);
         super.onCreate(savedInstanceState);
 
-        setShowMenuIcon(true);
+
     }
+
 
     @Override
     public ArrayList<HomeMenu> getHomeMenuList() {
@@ -24,9 +27,12 @@ public class MaterialHomeMenu extends BaseMenuActivity {
 
 
         ArrayList<HomeMenu> arrData=new ArrayList<>();
-        arrData.add(new HomeMenu().setMenuTitle("Home").setMenuDesc("Very informative").setMenuIcon(R.drawable.ic_home));
-        arrData.add(new HomeMenu().setMenuTitle("Settings").setMenuDesc("Very informative").setMenuIcon(R.drawable.ic_home));
-        arrData.add(new HomeMenu().setMenuTitle("About us").setMenuDesc("Very informative").setMenuIcon(R.drawable.ic_home));
+        arrData.add(new HomeMenu().setMenuTitle("Home").setMenuDesc("Description").setMenuIcon(R.drawable.ic_home));
+        arrData.add(new HomeMenu().setMenuTitle("Home").setMenuDesc("Description").setMenuIcon(R.drawable.ic_home));
+        arrData.add(new HomeMenu().setMenuTitle("Home").setMenuDesc("Description").setMenuIcon(R.drawable.ic_home));
+        arrData.add(new HomeMenu().setMenuTitle("Home").setMenuDesc("Description").setMenuIcon(R.drawable.ic_home));
+        arrData.add(new HomeMenu().setMenuTitle("Home").setMenuDesc("Description").setMenuIcon(R.drawable.ic_home));
+        arrData.add(new HomeMenu().setMenuTitle("Home").setMenuDesc("Description").setMenuIcon(R.drawable.ic_home));
 
         return arrData;
     }

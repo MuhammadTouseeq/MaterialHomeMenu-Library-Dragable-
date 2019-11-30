@@ -6,21 +6,19 @@
 
 <ImageView
     android:layout_width="40dp"
-    android:src="@drawable/ic_home"
     android:layout_marginRight="8dp"
-
+    android:padding="8dp"
+    android:src="@android:drawable/ic_menu_edit"
     android:layout_alignParentLeft="true"
-    android:layout_centerInParent="true"
+android:layout_centerInParent="true"
     android:id="@+id/imgMenuIcon"
     android:layout_height="40dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
-       android:layout_centerInParent="true"
-
         android:id="@+id/container"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:layout_toRightOf="@+id/imgMenuIcon"
         android:layout_height="wrap_content">
     <TextView
@@ -38,8 +36,8 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_marginTop="16dp"
-            android:background="@android:color/darker_gray"
+            android:layout_marginTop="24dp"
+            android:background="#ddd"
             android:layout_height="1dp"/>
     </LinearLayout>
 </RelativeLayout>

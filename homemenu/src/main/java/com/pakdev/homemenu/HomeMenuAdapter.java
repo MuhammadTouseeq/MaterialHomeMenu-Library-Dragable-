@@ -2,6 +2,7 @@ package com.pakdev.homemenu;
 
 import android.content.Context;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,14 +10,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 
-
-public class HomeMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class HomeMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements ItemTouchHelperAdapter {
 
 
     private final LayoutInflater mInflater;
@@ -24,6 +27,8 @@ public class HomeMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private ArrayList<HomeMenu> arrMenus;
     public static ItemClickListener mClickListener;
     public boolean isMenuIcon;
+    public boolean isGridMenu;
+    public int itemSize;
 
 
     // data is passed into the constructor
@@ -37,7 +42,18 @@ public class HomeMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     // inflates the row layout from xml when needed
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.rv_item_menu, parent, false);
+        View view=null;
+
+        if(itemSize!=0) {
+        view = mInflater.inflate(R.layout.rv_item_grid_menu, parent, false);
+           GridLayoutManager.LayoutParams params = (GridLayoutManager.LayoutParams) view.getLayoutParams();
+           params.height = itemSize;
+           view.setLayoutParams(params);
+       }
+      else{
+          view = mInflater.inflate(R.layout.rv_item_menu, parent, false);
+        }
+
         return new ViewHolder(view);
     }
 
@@ -53,6 +69,10 @@ public class HomeMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         viewHolder.imgMenuIcon.setVisibility(isMenuIcon?View.VISIBLE:View.GONE);
 
+    }
+
+    public void setItemSize(int itemSize) {
+        this.itemSize = itemSize;
     }
 
     public void setMenuIcon(boolean menuIcon) {
@@ -73,6 +93,8 @@ public class HomeMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public int getItemCount() {
         return arrMenus.size();
     }
+
+
 
      static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -97,6 +119,27 @@ public class HomeMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
     }
 
+
+    @Override
+    public void onItemDismiss(int position) {
+        arrMenus.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    @Override
+    public void onItemMove(int fromPosition, int toPosition) {
+        if (fromPosition < toPosition) {
+            for (int i = fromPosition; i < toPosition; i++) {
+                Collections.swap(arrMenus, i, i + 1);
+            }
+        } else {
+            for (int i = fromPosition; i > toPosition; i--) {
+                Collections.swap(arrMenus, i, i - 1);
+            }
+        }
+        notifyItemMoved(fromPosition, toPosition);
+      //  return true;
+    }
 
 
     // parent activity will implement this method to respond to click events
