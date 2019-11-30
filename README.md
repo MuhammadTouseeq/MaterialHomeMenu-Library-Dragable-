@@ -26,7 +26,7 @@ allprojects {
 
 Just add it to your dependencies
 ```
-  implementation 'com.github.MuhammadTouseeq:MaterialHomeMenu-Library:1.0'
+  implementation 'com.github.MuhammadTouseeq:MaterialHomeMenu-Library:1.0.1'
 ```
 
 ### Usage
