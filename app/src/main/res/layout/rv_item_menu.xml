@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+<ImageView
+    android:layout_width="40dp"
+    tools:src="@drawable/ic_home"
+    android:layout_marginRight="8dp"
+    android:layout_alignParentLeft="true"
+    android:layout_centerInParent="true"
+    android:id="@+id/imgMenuIcon"
+    android:layout_height="40dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+       android:layout_centerInParent="true"
+
+        android:id="@+id/container"
+        android:layout_marginTop="24dp"
+        android:layout_toRightOf="@+id/imgMenuIcon"
+        android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="match_parent"
+        tools:text="Title"
+        android:textColor="@android:color/black"
+        android:id="@+id/txtMenuTitle"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+    android:id="@+id/txtMenuDesc"
+        tools:text="description"
+        android:layout_height="wrap_content"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="24dp"
+            android:background="@android:color/darker_gray"
+            android:layout_height="1dp"/>
+    </LinearLayout>
+</RelativeLayout>
