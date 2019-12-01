@@ -13,7 +13,7 @@ Material home menu is a android library for creating material design home menus 
 7. Multishape drawable for menus
 
 ## Screenshots
-
+<img src='screenshot/animate.gif' height=480  width=240/> <img src='screenshot/animation2.gif' height=480  width=240/>
 <img src='screenshot/image1.jpeg' height=480  width=240/><img src='screenshot/image2.jpeg' height=480  width=240/>
 <img src='screenshot/image3.jpeg' height=480  width=240/>
 
