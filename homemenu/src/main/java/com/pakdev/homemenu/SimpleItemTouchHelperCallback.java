@@ -5,9 +5,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
  
-    private final ItemTouchHelperAdapter mAdapter;
+    private final ItemTouchHelperCallback mAdapter;
 
-    public SimpleItemTouchHelperCallback(ItemTouchHelperAdapter adapter) {
+    public SimpleItemTouchHelperCallback(ItemTouchHelperCallback adapter) {
         mAdapter = adapter;
     }
     
@@ -18,7 +18,7 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
 
     @Override
     public boolean isItemViewSwipeEnabled() {
-        return true;
+        return false;
     }
 
     @Override

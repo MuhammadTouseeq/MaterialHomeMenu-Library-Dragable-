@@ -21,7 +21,7 @@ package com.pakdev.homemenu;
  *
  * @author Paul Burke (ipaulpro)
  */
-public interface ItemTouchHelperAdapter {
+public interface ItemTouchHelperCallback {
 
     /**
      * Called when an item has been dragged far enough to trigger a move. This is called every time

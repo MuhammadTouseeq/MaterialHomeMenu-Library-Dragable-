@@ -1,8 +1,9 @@
 package com.pakdev.homemenu;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 
-public class HomeMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements ItemTouchHelperAdapter {
+public class HomeMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements ItemTouchHelperCallback {
 
 
     private final LayoutInflater mInflater;
@@ -28,7 +28,13 @@ public class HomeMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public static ItemClickListener mClickListener;
     public boolean isMenuIcon;
     public boolean isGridMenu;
+
     public int itemSize;
+    long DURATION = 0;
+    private boolean on_attach = true;
+
+    public HomeMenu.DRAWABLE_SHAPE drawable_shape;
+    public HomeMenu.MENU_ANIMATION animationType;
 
 
     // data is passed into the constructor
@@ -44,12 +50,23 @@ public class HomeMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view=null;
 
-        if(itemSize!=0) {
+        if(isGridMenu&&drawable_shape.equals(HomeMenu.DRAWABLE_SHAPE.DEFAULT)) {
         view = mInflater.inflate(R.layout.rv_item_grid_menu, parent, false);
            GridLayoutManager.LayoutParams params = (GridLayoutManager.LayoutParams) view.getLayoutParams();
            params.height = itemSize;
            view.setLayoutParams(params);
-       }
+
+        }
+        else if(isGridMenu&&drawable_shape.equals(HomeMenu.DRAWABLE_SHAPE.CIRCLE))
+        {
+
+            view = mInflater.inflate(R.layout.rv_item_circle_grid_menu, parent, false);
+        }
+        else if(isGridMenu&&drawable_shape.equals(HomeMenu.DRAWABLE_SHAPE.ROUNDED))
+        {
+
+            view = mInflater.inflate(R.layout.rv_item_rounded_grid_menu, parent, false);
+        }
       else{
           view = mInflater.inflate(R.layout.rv_item_menu, parent, false);
         }
@@ -69,14 +86,39 @@ public class HomeMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         viewHolder.imgMenuIcon.setVisibility(isMenuIcon?View.VISIBLE:View.GONE);
 
+
+
+        if(animationType!=null&&animationType.equals(HomeMenu.MENU_ANIMATION.FADE_IN)) {
+            AnimationUtils.setFadeAnimation(holder.itemView, position, DURATION);
+        }
+        else if(animationType!=null&&animationType.equals(HomeMenu.MENU_ANIMATION.LEFT_TO_RIGHT)) {
+            AnimationUtils.FromLeftToRight(holder.itemView, position, DURATION);
+        }
+        else if(animationType!=null&&animationType.equals(HomeMenu.MENU_ANIMATION.RIGHT_TO_LEFT)) {
+            AnimationUtils.FromRightToLeft(holder.itemView, position, DURATION);
+        }
+    }
+
+
+    public void setGridMenu(boolean gridMenu,HomeMenu.DRAWABLE_SHAPE shape) {
+        isGridMenu = gridMenu;
+        drawable_shape=shape;
+        notifyDataSetChanged();
     }
 
     public void setItemSize(int itemSize) {
         this.itemSize = itemSize;
     }
 
+    public void setAnimationType(HomeMenu.MENU_ANIMATION animationType,long duration) {
+        this.animationType = animationType;
+        this.DURATION=duration;
+        notifyDataSetChanged();
+    }
+
     public void setMenuIcon(boolean menuIcon) {
         isMenuIcon = menuIcon;
+        notifyDataSetChanged();
     }
 
     public HomeMenu getMenumAt(int positon)
@@ -146,5 +188,6 @@ public class HomeMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public interface ItemClickListener {
         void onItemClick(View view, int position);
     }
+
 
 }

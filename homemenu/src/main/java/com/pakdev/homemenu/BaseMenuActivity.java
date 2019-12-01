@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.graphics.Point;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.View;
@@ -20,6 +21,10 @@ public abstract class BaseMenuActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     private boolean showMenuIcon;
     private boolean isGridView;
+    private long ANIMATION_DURATION;
+    private HomeMenu.DRAWABLE_SHAPE MenuShape;
+    private HomeMenu.MENU_ANIMATION MenuAnimation;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,32 +32,31 @@ public abstract class BaseMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+        final HomeMenuAdapter adapter = new HomeMenuAdapter(getApplicationContext(), getHomeMenuList());
+        recyclerView = findViewById(R.id.recycleView);
 
-
-
-
-        final HomeMenuAdapter adapter=new HomeMenuAdapter(getApplicationContext(),getHomeMenuList());
-        recyclerView=findViewById(R.id.recycleView);
-
-
+//attach the recycle view for drag and drop
         ItemTouchHelper.Callback callback =
                 new SimpleItemTouchHelperCallback(adapter);
         ItemTouchHelper touchHelper = new ItemTouchHelper(callback);
         touchHelper.attachToRecyclerView(recyclerView);
+//binding the layout managers to recycleview
 
-        if(isGridView)
-        {
+        if (isGridView) {
             bindGridLayoutManager(adapter);
-        }
-        else {
+        } else {
 
             bindLinearLayoutManager();
-            adapter.setItemSize(0);
+
         }
-
-
         recyclerView.setAdapter(adapter);
+
+
+        //setting the home menu binding
         adapter.setMenuIcon(showMenuIcon);
+        adapter.setGridMenu(isGridView, MenuShape);
+
+        adapter.setAnimationType(MenuAnimation, ANIMATION_DURATION);
 
         adapter.setClickListener(new HomeMenuAdapter.ItemClickListener() {
             @Override
@@ -60,17 +64,31 @@ public abstract class BaseMenuActivity extends AppCompatActivity {
 
                 HomeMenu model = adapter.getMenumAt(position);
 
-                onMenuClick(model,position);
+                onMenuClick(model, position);
             }
         });
 
 
-
     }
 
-    public void setGridView(boolean gridView) {
+    //set gridview and its shape
+    protected void setGridView(boolean isGridMenu, HomeMenu.DRAWABLE_SHAPE menuShape) {
+
+        isGridView = isGridMenu;
+        MenuShape = menuShape;
+    }
+
+    //set grid view with default shape
+    protected void setGridView(boolean gridView) {
         isGridView = gridView;
+        MenuShape = HomeMenu.DRAWABLE_SHAPE.DEFAULT;
     }
+
+    protected void setAnimation(HomeMenu.MENU_ANIMATION animation, long Duration) {
+        MenuAnimation = animation;
+        ANIMATION_DURATION = Duration;
+    }
+
 
     private void bindLinearLayoutManager() {
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
@@ -80,8 +98,8 @@ public abstract class BaseMenuActivity extends AppCompatActivity {
         Display display = BaseMenuActivity.this.getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
-        int  y = size.y;
-        y=(int)y/4;
+        int y = size.y;
+        y = (int) y / 4;
         GridLayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 2);
         recyclerView.setLayoutManager(layoutManager);
         adapter.setItemSize(y);
@@ -92,8 +110,7 @@ public abstract class BaseMenuActivity extends AppCompatActivity {
     }
 
     public abstract ArrayList<HomeMenu> getHomeMenuList();
+
     public abstract void onMenuClick(HomeMenu model, int position);
-
-
 
 }
