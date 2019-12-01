@@ -13,7 +13,7 @@ Material home menu is a android library for creating material design home menus 
 7. Multishape drawable for menus
 
 ## Screenshots
-![alt text](https://www.github.com/MuhammadTouseeq/MaterialHomeMenu-Library-Dragable-/blob/1.0.2/screenshot/image1.jpeg)
+![WhatsApp Image 2019-12-01 at 4 07 19 AM (2)](https://user-images.githubusercontent.com/30018583/69914036-65421900-13f4-11ea-90fc-810c16bbdb61.jpeg)
 
 ## Integration 
 
