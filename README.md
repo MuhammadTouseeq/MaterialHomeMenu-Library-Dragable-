@@ -9,9 +9,11 @@ Material home menu is a android library for creating material design home menus 
 3. Both Vertical and GridMenu 
 4. Hide icon from menu is also available
 5. MenuClick event 
+6. Animated HomeMenus
+7. Multishape drawable for menus
 
 ## Screenshots
-![alt text](https://raw.githubusercontent.com/MuhammadTouseeq/MaterialHomeMenu-Library-Dragable-/blob/1.0.2/screenshot/image1.jpeg)
+![alt text](https://www.github.com/MuhammadTouseeq/MaterialHomeMenu-Library-Dragable-/blob/1.0.2/screenshot/image1.jpeg)
 
 ## Integration 
 
@@ -52,6 +54,28 @@ Pass the ArrayList of HomeMenus
         return arrData;
     }
 
+
+```
+
+##Animation
+
+```
+ 1. FADE_IN
+ 2. LEFT_TO_RIGHT
+ 3. RIGHT_TO_LEFT
+ 
+setAnimation(HomeMenu.MENU_ANIMATION.FADE_IN, 500);
+
+```
+
+##Shapes
+
+```
+
+ 1. CIRCLE
+ 2. ROUNDED
+ 3. DEFAULT
+ setGridView(true, HomeMenu.DRAWABLE_SHAPE.ROUNDED);
 
 ```
 
