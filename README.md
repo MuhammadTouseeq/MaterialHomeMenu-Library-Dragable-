@@ -57,7 +57,7 @@ Pass the ArrayList of HomeMenus
 
 ```
 
-##Animation
+## Animation
 
 ```
  1. FADE_IN
@@ -68,7 +68,7 @@ setAnimation(HomeMenu.MENU_ANIMATION.FADE_IN, 500);
 
 ```
 
-##Shapes
+## Shapes
 
 ```
 
