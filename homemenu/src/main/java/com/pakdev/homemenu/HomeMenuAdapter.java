@@ -1,7 +1,5 @@
 package com.pakdev.homemenu;
 
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.content.Context;
 
 import android.view.LayoutInflater;
@@ -68,7 +66,7 @@ public class HomeMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             view = mInflater.inflate(R.layout.rv_item_rounded_grid_menu, parent, false);
         }
       else{
-          view = mInflater.inflate(R.layout.rv_item_menu, parent, false);
+          view = mInflater.inflate(R.layout.rv_material_home_menu, parent, false);
         }
 
         return new ViewHolder(view);
