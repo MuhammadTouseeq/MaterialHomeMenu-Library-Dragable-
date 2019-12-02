@@ -30,11 +30,14 @@ allprojects {
 		}
 	}
 ```
-
+### implementation
 Just add it to your dependencies
 ```
-  implementation 'com.github.MuhammadTouseeq:MaterialHomeMenu-Library:1.0.2'
+  implementation 'com.github.MuhammadTouseeq:MaterialHomeMenu-Library:1.0.3'
 ```
+### For Recycleview (Optional)
+
+```implementation 'androidx.recyclerview:recyclerview:1.0.0'```
 
 ### Usage
 
@@ -50,9 +53,12 @@ Pass the ArrayList of HomeMenus
 
 
         ArrayList<HomeMenu> arrData=new ArrayList<>();
-        arrData.add(new HomeMenu().setMenuTitle("Home").setMenuDesc("Description").setMenuIcon(R.drawable.ic_home));
-        arrData.add(new HomeMenu().setMenuTitle("Settings").setMenuDesc("Description").setMenuIcon(R.drawable.ic_home));
+       arrData.add(new HomeMenu().setMenuTitle("Home").setMenuDesc("Description").setMenuIcon(R.drawable.ic_home));
         arrData.add(new HomeMenu().setMenuTitle("About us").setMenuDesc("Description").setMenuIcon(R.drawable.ic_home));
+        arrData.add(new HomeMenu().setMenuTitle("Sports").setMenuDesc("Description").setMenuIcon(R.drawable.ic_home));
+        arrData.add(new HomeMenu().setMenuTitle("News").setMenuDesc("Description").setMenuIcon(R.drawable.ic_home));
+        arrData.add(new HomeMenu().setMenuTitle("Help").setMenuDesc("Description").setMenuIcon(R.drawable.ic_home));
+        arrData.add(new HomeMenu().setMenuTitle("Entertainments").setMenuDesc("Description").setMenuIcon(R.drawable.ic_home));
 
         return arrData;
     }
