@@ -4,6 +4,17 @@
 
 Material home menu is a android library for creating material design home menus for the app with less code 
 
+<p align="center">
+:robot: Pull Requests for Hacktoberfest are Welcomed 
+</p>
+
+<br>
+
+<div align="center">
+	<img src="https://raw.githubusercontent.com/androiddevnotes/androiddevnotes/master/assets/hacktoberfest2020.jpg" alt="Hacktoberfest 2020 logo"></img>   
+</div>
+
+
 ## Features built in:
 
 1. Material Design HomeMenus
