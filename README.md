@@ -90,6 +90,20 @@ setAnimation(HomeMenu.MENU_ANIMATION.FADE_IN, 500);
 
 ```
 
+## Drwable for Menu
+
+```
+ setGridView(true, HomeMenu.DRAWABLE_SHAPE.CUSTOM);
+ setShapeDrawable(R.drawable.shape_rounded_base);
+
+```
+
+## Change Menu TextColor
+
+```
+ setMenuTextColor(android.R.color.white);
+```
+
 ## Shapes
 
 ```
