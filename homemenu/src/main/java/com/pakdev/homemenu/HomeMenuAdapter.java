@@ -1,13 +1,12 @@
 package com.pakdev.homemenu;
 
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.content.Context;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -30,6 +29,8 @@ public class HomeMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public boolean isGridMenu;
 
     public int itemSize;
+    public int shapeDrawable;
+    public int textColor;
     long DURATION = 0;
     private boolean on_attach = true;
 
@@ -50,22 +51,12 @@ public class HomeMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view=null;
 
-        if(isGridMenu&&drawable_shape.equals(HomeMenu.DRAWABLE_SHAPE.DEFAULT)) {
+        if(isGridMenu) {
         view = mInflater.inflate(R.layout.rv_item_grid_menu, parent, false);
            GridLayoutManager.LayoutParams params = (GridLayoutManager.LayoutParams) view.getLayoutParams();
            params.height = itemSize;
            view.setLayoutParams(params);
 
-        }
-        else if(isGridMenu&&drawable_shape.equals(HomeMenu.DRAWABLE_SHAPE.CIRCLE))
-        {
-
-            view = mInflater.inflate(R.layout.rv_item_circle_grid_menu, parent, false);
-        }
-        else if(isGridMenu&&drawable_shape.equals(HomeMenu.DRAWABLE_SHAPE.ROUNDED))
-        {
-
-            view = mInflater.inflate(R.layout.rv_item_rounded_grid_menu, parent, false);
         }
       else{
           view = mInflater.inflate(R.layout.rv_item_menu, parent, false);
@@ -80,13 +71,37 @@ public class HomeMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         HomeMenu homeMenu = arrMenus.get(position);
         viewHolder.txtMenuTitle.setText(homeMenu.getMenuTitle());
         viewHolder.txtMenuDesc.setText(homeMenu.getMenuDesc());
+
+        viewHolder.txtMenuTitle.setTextColor(context.getResources().getColor(textColor));
+        viewHolder.txtMenuDesc.setTextColor(context.getResources().getColor(textColor));
         if(homeMenu.getMenuIcon()==0)
             return;
         viewHolder.imgMenuIcon.setImageDrawable(context.getResources().getDrawable(homeMenu.getMenuIcon()));
 
         viewHolder.imgMenuIcon.setVisibility(isMenuIcon?View.VISIBLE:View.GONE);
 
+        switch (drawable_shape)
+        {
+            case CIRCLE:
+            {
+                viewHolder.rootlayout.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.mhm_shape_circle));
 
+            }
+            break;
+            case ROUNDED:
+            {
+                viewHolder.rootlayout.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.mhm_shape_rounded));
+
+            }
+            break;
+            case CUSTOM:
+            {
+                viewHolder.rootlayout.setBackgroundDrawable(context.getResources().getDrawable(shapeDrawable));
+
+            }
+            break;
+
+        }
 
         if(animationType!=null&&animationType.equals(HomeMenu.MENU_ANIMATION.FADE_IN)) {
             AnimationUtils.setFadeAnimation(holder.itemView, position, DURATION);
@@ -130,6 +145,16 @@ public class HomeMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         this.mClickListener = itemClickListener;
     }
 
+    public void setShapeDrawable(int shapeDrawable) {
+        if(shapeDrawable==-1)
+            return;
+        this.shapeDrawable = shapeDrawable;
+        notifyDataSetChanged();
+    }
+
+    public void setTextColor(int textColor) {
+        this.textColor = textColor;
+    }
 
     @Override
     public int getItemCount() {
@@ -143,6 +168,7 @@ public class HomeMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
 
         TextView txtMenuTitle;
+        LinearLayout rootlayout;
         TextView txtMenuDesc;
         ImageView imgMenuIcon;
 
@@ -150,6 +176,7 @@ public class HomeMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         ViewHolder(View view) {
             super(view);
          txtMenuTitle=view.findViewById(R.id.txtMenuTitle);
+            rootlayout=view.findViewById(R.id.rootlayout);
          txtMenuDesc=view.findViewById(R.id.txtMenuDesc);
             imgMenuIcon=view.findViewById(R.id.imgMenuIcon);
 

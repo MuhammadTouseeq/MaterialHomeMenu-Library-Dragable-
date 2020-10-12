@@ -3,7 +3,7 @@ package com.pakdev.homemenu;
 public class HomeMenu {
 
     public enum DRAWABLE_SHAPE{
-        CIRCLE,ROUNDED,DEFAULT
+        CIRCLE,ROUNDED,DEFAULT,CUSTOM
     }
 
     public enum MENU_ANIMATION{

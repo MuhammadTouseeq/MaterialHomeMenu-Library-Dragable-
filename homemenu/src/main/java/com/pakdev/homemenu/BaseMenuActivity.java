@@ -8,9 +8,11 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.view.Display;
 import android.view.View;
 
@@ -20,12 +22,13 @@ public abstract class BaseMenuActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     private boolean showMenuIcon;
+    private int mShapeDrawable = -1;
     private boolean isGridView;
     private long ANIMATION_DURATION;
     private HomeMenu.DRAWABLE_SHAPE MenuShape;
     private HomeMenu.MENU_ANIMATION MenuAnimation;
 
-
+private int menuTextColor=android.R.color.black;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,9 +58,10 @@ public abstract class BaseMenuActivity extends AppCompatActivity {
         //setting the home menu binding
         adapter.setMenuIcon(showMenuIcon);
         adapter.setGridMenu(isGridView, MenuShape);
-
+        adapter.setShapeDrawable(mShapeDrawable);
         adapter.setAnimationType(MenuAnimation, ANIMATION_DURATION);
 
+        adapter.setTextColor(menuTextColor);
         adapter.setClickListener(new HomeMenuAdapter.ItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
@@ -76,6 +80,14 @@ public abstract class BaseMenuActivity extends AppCompatActivity {
 
         isGridView = isGridMenu;
         MenuShape = menuShape;
+    }
+
+    protected void setShapeDrawable(int shapeDrawable) {
+        mShapeDrawable = shapeDrawable;
+    }
+
+    protected void setMenuTextColor(int menuTextColor) {
+        this.menuTextColor = menuTextColor;
     }
 
     //set grid view with default shape

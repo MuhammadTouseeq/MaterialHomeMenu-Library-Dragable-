@@ -4,7 +4,9 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:gravity="center"
-    android:background="@drawable/outline_border"
+    android:layout_margin="5dp"
+    android:id="@+id/rootlayout"
+    android:background="@drawable/mhm_outline_border"
     android:layout_height="wrap_content">
 
 <ImageView

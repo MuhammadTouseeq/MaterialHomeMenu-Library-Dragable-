@@ -16,12 +16,14 @@ public class MaterialHomeMenu extends BaseMenuActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         //to show /hide icon
-        setShowMenuIcon(true);
+       setShowMenuIcon(true);
         //For List View
-       setGridView(false);
+      // setGridView(false);
         //For Grid View
-      // setGridView(false, HomeMenu.DRAWABLE_SHAPE.ROUNDED);
-        //setAnimation(HomeMenu.MENU_ANIMATION.FADE_IN, 500);
+       setGridView(true, HomeMenu.DRAWABLE_SHAPE.CUSTOM);
+       setShapeDrawable(R.drawable.shape_rounded_base);
+       setMenuTextColor(android.R.color.white);
+        setAnimation(HomeMenu.MENU_ANIMATION.RIGHT_TO_LEFT, 500);
 
         super.onCreate(savedInstanceState);
 
@@ -32,12 +34,12 @@ public class MaterialHomeMenu extends BaseMenuActivity {
 
 
         ArrayList<HomeMenu> arrData = new ArrayList<>();
-        arrData.add(new HomeMenu().setMenuTitle("Home").setMenuDesc("Description").setMenuIcon(R.drawable.ic_home));
-        arrData.add(new HomeMenu().setMenuTitle("About us").setMenuDesc("Description").setMenuIcon(R.drawable.ic_home));
-        arrData.add(new HomeMenu().setMenuTitle("Sports").setMenuDesc("Description").setMenuIcon(R.drawable.ic_home));
-        arrData.add(new HomeMenu().setMenuTitle("News").setMenuDesc("Description").setMenuIcon(R.drawable.ic_home));
-        arrData.add(new HomeMenu().setMenuTitle("Help").setMenuDesc("Description").setMenuIcon(R.drawable.ic_home));
-        arrData.add(new HomeMenu().setMenuTitle("Entertainments").setMenuDesc("Description").setMenuIcon(R.drawable.ic_home));
+        arrData.add(new HomeMenu().setMenuTitle("Home").setMenuDesc("Description").setMenuIcon(R.drawable.baseline_android_white_24dp));
+        arrData.add(new HomeMenu().setMenuTitle("About us").setMenuDesc("Description").setMenuIcon(R.drawable.baseline_android_white_24dp));
+        arrData.add(new HomeMenu().setMenuTitle("Sports").setMenuDesc("Description").setMenuIcon(R.drawable.baseline_android_white_24dp));
+        arrData.add(new HomeMenu().setMenuTitle("News").setMenuDesc("Description").setMenuIcon(R.drawable.baseline_android_white_24dp));
+        arrData.add(new HomeMenu().setMenuTitle("Help").setMenuDesc("Description").setMenuIcon(R.drawable.baseline_android_white_24dp));
+        arrData.add(new HomeMenu().setMenuTitle("Entertainments").setMenuDesc("Description").setMenuIcon(R.drawable.baseline_android_white_24dp));
 
         return arrData;
     }
