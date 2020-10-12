@@ -5,7 +5,7 @@
     android:layout_width="180dp"
     android:gravity="center"
     android:layout_margin="5dp"
-    android:background="@drawable/shape_rounded"
+    android:background="@drawable/mhm_shape_rounded"
     android:layout_height="180dp">
 
 <ImageView
