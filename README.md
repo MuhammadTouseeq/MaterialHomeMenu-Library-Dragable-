@@ -29,7 +29,8 @@ Material home menu is a android library for creating material design home menus 
 <img src='screenshot/animate.gif' height=480  width=240/> <img src='screenshot/animation2.gif' height=480  width=240/>
 <img src='screenshot/animation3.gif' height=480  width=240/>
 <img src='screenshot/image1.jpeg' height=480  width=240/><img src='screenshot/image2.jpeg' height=480  width=240/>
-<img src='screenshot/image3.jpeg' height=480  width=240/>
+<img src='screenshot/image3.jpeg' height=480  width=240/> <img src='screenshot/image4.jpg' height=480  width=240/>
+
 
 ## Integration 
 
