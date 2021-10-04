@@ -36,7 +36,7 @@ allprojects {
 ### implementation
 Just add it to your dependencies
 ```
-  implementation 'com.github.MuhammadTouseeq:MaterialHomeMenu-Library:1.0.3'
+  implementation 'com.github.MuhammadTouseeq:MaterialHomeMenu-Library:1.0.4'
 ```
 ### For Recycleview (Optional)
 
