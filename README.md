@@ -94,6 +94,12 @@ setAnimation(HomeMenu.MENU_ANIMATION.FADE_IN, 500);
  setMenuTextColor(android.R.color.white);
 ```
 
+## Change Menu cardColor
+
+```
+ setMenuCardColor(android.R.color.white);
+```
+
 ## Shapes
 
 ```
