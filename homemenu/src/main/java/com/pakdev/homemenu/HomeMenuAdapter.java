@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,6 +32,7 @@ public class HomeMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public int itemSize;
     public int shapeDrawable;
     public int textColor;
+    public int cardColor=-1;
     long DURATION = 0;
     private boolean on_attach = true;
 
@@ -51,12 +53,19 @@ public class HomeMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view=null;
 
-        if(isGridMenu) {
-        view = mInflater.inflate(R.layout.rv_item_grid_menu, parent, false);
+        if(isGridMenu&&cardColor==-1) {
+        view = mInflater.inflate(R.layout.rv_item_circle_grid_menu, parent, false);
            GridLayoutManager.LayoutParams params = (GridLayoutManager.LayoutParams) view.getLayoutParams();
            params.height = itemSize;
            view.setLayoutParams(params);
 
+        }
+        else if(cardColor!=-1&&isGridMenu)
+        {
+            view = mInflater.inflate(R.layout.rv_item_grid_menu, parent, false);
+            GridLayoutManager.LayoutParams params = (GridLayoutManager.LayoutParams) view.getLayoutParams();
+            params.height = itemSize;
+            view.setLayoutParams(params);
         }
       else{
           view = mInflater.inflate(R.layout.rv_material_home_menu, parent, false);
@@ -79,6 +88,11 @@ public class HomeMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         viewHolder.imgMenuIcon.setImageDrawable(context.getResources().getDrawable(homeMenu.getMenuIcon()));
 
         viewHolder.imgMenuIcon.setVisibility(isMenuIcon?View.VISIBLE:View.GONE);
+
+        if(isGridMenu&&cardColor!=-1)
+        {
+            viewHolder.cardMenu.setCardBackgroundColor(context.getResources().getColor(cardColor));
+        }
 
         switch (drawable_shape)
         {
@@ -130,7 +144,10 @@ public class HomeMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         this.DURATION=duration;
         notifyDataSetChanged();
     }
-
+    public void setMenuCardColor(int mCardcolor) {
+        this.cardColor = mCardcolor;
+        notifyDataSetChanged();
+    }
     public void setMenuIcon(boolean menuIcon) {
         isMenuIcon = menuIcon;
         notifyDataSetChanged();
@@ -171,6 +188,7 @@ public class HomeMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         LinearLayout rootlayout;
         TextView txtMenuDesc;
         ImageView imgMenuIcon;
+        CardView cardMenu;
 
 
         ViewHolder(View view) {
@@ -179,6 +197,7 @@ public class HomeMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             rootlayout=view.findViewById(R.id.rootlayout);
          txtMenuDesc=view.findViewById(R.id.txtMenuDesc);
             imgMenuIcon=view.findViewById(R.id.imgMenuIcon);
+            cardMenu=view.findViewById(R.id.cardMenu);
 
             view.setOnClickListener(this);
         }

@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/_120sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="@dimen/_5sdp"
+    app:cardBackgroundColor="@android:color/holo_green_dark"
+    android:layout_margin="@dimen/_8sdp"
+    android:id="@+id/cardMenu"
+    app:cardCornerRadius="@dimen/_15sdp"
+    android:layout_height="@dimen/_100sdp">
+
+<LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:gravity="center"
-    android:layout_margin="5dp"
+    android:padding="@dimen/_16sdp"
     android:id="@+id/rootlayout"
-    android:background="@drawable/mhm_outline_border"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
-<ImageView
+
+    <ImageView
     android:layout_width="40dp"
     android:id="@+id/imgMenuIcon"
     android:layout_height="40dp"/>
@@ -19,6 +29,7 @@
         android:layout_width="wrap_content"
         tools:text="Title"
         android:textSize="16sp"
+        android:layout_marginTop="@dimen/_5sdp"
         android:textColor="@android:color/black"
         android:id="@+id/txtMenuTitle"
         android:layout_height="wrap_content"/>
@@ -31,3 +42,4 @@
 
 
     </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -9,7 +9,9 @@ public class HomeMenu {
     public enum MENU_ANIMATION{
         FADE_IN,LEFT_TO_RIGHT,RIGHT_TO_LEFT
     }
-
+    public enum HOME_MENU_TYPE{
+        CIRCLE,GRIDVIEW,LISTVIEW
+    }
     private String mMenuTitle;
     private String mMenuDesc;
     private int mMenuIcon;
