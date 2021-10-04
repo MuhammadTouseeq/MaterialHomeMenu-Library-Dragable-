@@ -18,12 +18,13 @@ public class MaterialHomeMenu extends BaseMenuActivity {
         //to show /hide icon
        setShowMenuIcon(true);
         //For List View
-      // setGridView(false);
+       setGridView(true);
         //For Grid View
-       setGridView(true, HomeMenu.DRAWABLE_SHAPE.CUSTOM);
-       setShapeDrawable(R.drawable.shape_rounded_base);
-       setMenuTextColor(android.R.color.white);
-        setAnimation(HomeMenu.MENU_ANIMATION.RIGHT_TO_LEFT, 500);
+       setGridView(true, HomeMenu.DRAWABLE_SHAPE.CIRCLE);
+//       setShapeDrawable(R.drawable.shape_rounded_base);
+     //   setMenuCardColor(android.R.color.holo_green_dark);
+       setMenuTextColor(android.R.color.black);
+       // setAnimation(HomeMenu.MENU_ANIMATION.RIGHT_TO_LEFT, 500);
 
         super.onCreate(savedInstanceState);
 
@@ -34,12 +35,12 @@ public class MaterialHomeMenu extends BaseMenuActivity {
 
 
         ArrayList<HomeMenu> arrData = new ArrayList<>();
-        arrData.add(new HomeMenu().setMenuTitle("Home").setMenuDesc("Description").setMenuIcon(R.drawable.baseline_android_white_24dp));
-        arrData.add(new HomeMenu().setMenuTitle("About us").setMenuDesc("Description").setMenuIcon(R.drawable.baseline_android_white_24dp));
-        arrData.add(new HomeMenu().setMenuTitle("Sports").setMenuDesc("Description").setMenuIcon(R.drawable.baseline_android_white_24dp));
-        arrData.add(new HomeMenu().setMenuTitle("News").setMenuDesc("Description").setMenuIcon(R.drawable.baseline_android_white_24dp));
-        arrData.add(new HomeMenu().setMenuTitle("Help").setMenuDesc("Description").setMenuIcon(R.drawable.baseline_android_white_24dp));
-        arrData.add(new HomeMenu().setMenuTitle("Entertainments").setMenuDesc("Description").setMenuIcon(R.drawable.baseline_android_white_24dp));
+        arrData.add(new HomeMenu().setMenuTitle("Home").setMenuDesc("Description").setMenuIcon(R.drawable.cloth_icon));
+        arrData.add(new HomeMenu().setMenuTitle("About us").setMenuDesc("Description").setMenuIcon(R.drawable.cloth_icon));
+        arrData.add(new HomeMenu().setMenuTitle("Sports").setMenuDesc("Description").setMenuIcon(R.drawable.cloth_icon));
+        arrData.add(new HomeMenu().setMenuTitle("News").setMenuDesc("Description").setMenuIcon(R.drawable.cloth_icon));
+        arrData.add(new HomeMenu().setMenuTitle("Help").setMenuDesc("Description").setMenuIcon(R.drawable.cloth_icon));
+        arrData.add(new HomeMenu().setMenuTitle("Entertainments").setMenuDesc("Description").setMenuIcon(R.drawable.cloth_icon));
 
         return arrData;
     }

@@ -1,23 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="@dimen/_5sdp"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="@dimen/_15sdp"
+    android:layout_height="wrap_content">
+
+<LinearLayout
     android:orientation="vertical"
-    android:layout_width="180dp"
+    android:layout_width="wrap_content"
     android:gravity="center"
+    android:padding="@dimen/_15sdp"
     android:layout_margin="5dp"
-    android:background="@drawable/mhm_shape_rounded"
-    android:layout_height="180dp">
+    android:layout_height="wrap_content">
 
 <ImageView
-    android:layout_width="60dp"
+    android:layout_width="@dimen/_60sdp"
     android:id="@+id/imgMenuIcon"
-    android:layout_height="60dp"/>
+    android:layout_height="@dimen/_60sdp"/>
 
 
     <TextView
         android:layout_width="wrap_content"
         tools:text="Title"
         android:textSize="16sp"
+        android:layout_marginTop="@dimen/_5sdp"
         android:textColor="@android:color/black"
         android:id="@+id/txtMenuTitle"
         android:layout_height="wrap_content"/>
@@ -31,3 +40,4 @@
 
 
     </LinearLayout>
+</androidx.cardview.widget.CardView>

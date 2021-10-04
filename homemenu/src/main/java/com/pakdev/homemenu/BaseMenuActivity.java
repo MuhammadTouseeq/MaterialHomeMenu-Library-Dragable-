@@ -26,6 +26,7 @@ public abstract class BaseMenuActivity extends AppCompatActivity {
     private HomeMenu.MENU_ANIMATION MenuAnimation;
 
 private int menuTextColor=android.R.color.black;
+private int menuCardColor=-1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +58,7 @@ private int menuTextColor=android.R.color.black;
         adapter.setGridMenu(isGridView, MenuShape);
         adapter.setShapeDrawable(mShapeDrawable);
         adapter.setAnimationType(MenuAnimation, ANIMATION_DURATION);
+        adapter.setMenuCardColor(menuCardColor);
 
         adapter.setTextColor(menuTextColor);
         adapter.setClickListener(new HomeMenuAdapter.ItemClickListener() {
@@ -85,6 +87,10 @@ private int menuTextColor=android.R.color.black;
 
     protected void setMenuTextColor(int menuTextColor) {
         this.menuTextColor = menuTextColor;
+    }
+
+    protected void setMenuCardColor(int menuCardColor) {
+        this.menuCardColor = menuCardColor;
     }
 
     //set grid view with default shape
@@ -117,6 +123,7 @@ private int menuTextColor=android.R.color.black;
     protected void setShowMenuIcon(boolean showMenuIcon) {
         this.showMenuIcon = showMenuIcon;
     }
+
 
     public abstract ArrayList<HomeMenu> getHomeMenuList();
 

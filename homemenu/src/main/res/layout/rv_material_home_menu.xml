@@ -5,14 +5,14 @@
     android:layout_height="wrap_content">
 
 <ImageView
-    android:layout_width="40dp"
+    android:layout_width="@dimen/_30sdp"
     android:layout_marginRight="8dp"
     android:padding="8dp"
     android:src="@android:drawable/ic_menu_edit"
     android:layout_alignParentLeft="true"
 android:layout_centerInParent="true"
     android:id="@+id/imgMenuIcon"
-    android:layout_height="40dp"/>
+    android:layout_height="@dimen/_30sdp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
